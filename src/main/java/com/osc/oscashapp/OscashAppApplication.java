@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication(exclude = MybatisAutoConfiguration.class)
-@ServletComponentScan
 @EnableAutoConfiguration
+@ServletComponentScan
 @MapperScan("com.osc.oscashapp.mapper")
 public class OscashAppApplication {
 	

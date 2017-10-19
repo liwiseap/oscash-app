@@ -17,11 +17,11 @@ import com.alibaba.druid.pool.DruidDataSource;
 
 @Configuration
 @EnableTransactionManagement
-public class DataBaseConfiguration implements EnvironmentAware {
+public class DataBaseConfig implements EnvironmentAware {
 
 	private RelaxedPropertyResolver propertyResolver;
 
-	private static Logger logger = LoggerFactory.getLogger(DataBaseConfiguration.class);
+	private static Logger logger = LoggerFactory.getLogger(DataBaseConfig.class);
 
 	/**
 	 * 初始化properties配置

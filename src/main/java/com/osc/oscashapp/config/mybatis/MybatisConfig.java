@@ -21,14 +21,14 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.osc.oscashapp.config.datasource.DataBaseConfiguration;
+import com.osc.oscashapp.config.datasource.DataBaseConfig;
 
 @Configuration
 @ConditionalOnClass({ EnableTransactionManagement.class, EntityManager.class })
-@AutoConfigureAfter({ DataBaseConfiguration.class })
-public class MybatisConfiguration implements EnvironmentAware {
+@AutoConfigureAfter({ DataBaseConfig.class })
+public class MybatisConfig implements EnvironmentAware {
 
-	private static Logger logger = LoggerFactory.getLogger(MybatisConfiguration.class);
+	private static Logger logger = LoggerFactory.getLogger(MybatisConfig.class);
 
 	private RelaxedPropertyResolver propertyResolver;
 
