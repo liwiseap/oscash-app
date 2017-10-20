@@ -1,8 +1,11 @@
 package com.osc.oscashapp.service.user.bank;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
 import com.osc.oscashapp.entity.user.bank.TUserBank;
 import com.osc.oscashapp.mapper.user.bank.TUserBankMapper;
 
@@ -13,8 +16,10 @@ public class UserBankServiceImpl implements UserBankService{
 	private TUserBankMapper userBankMapper;
 
 	@Override
-	public TUserBank getUserBank(String bankId) {
-		return userBankMapper.selectByPrimaryKey(bankId);
+	public List<TUserBank> getAll() {
+		PageHelper.startPage(1, 10);
+		return userBankMapper.selectAll();
 	}
+
 	
 }
