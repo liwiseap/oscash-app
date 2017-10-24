@@ -66,14 +66,21 @@
     
 	<!--
     <table schema="smd" tableName="t_open_user"
-		domainObjectName="open.user.TOpenUser" >
+		domainObjectName="open.user.TOpenUser" mapperName="user.bank.TOpenUserMapper">
 		<generatedKey column="id" sqlStatement="Mysql" identity="true"/>
 	</table> -->
-    <table schema="smd" tableName="t_user_bank" domainObjectName="user.bank.TUserBank" 
+    <!-- <table schema="smd" tableName="t_user_bank" domainObjectName="user.bank.TUserBank" 
     mapperName="user.bank.TUserBankMapper" >
 		<generatedKey column="bank_id" sqlStatement="Mysql" identity="true"/>
+	</table> -->
+    <!-- <table schema="smd" tableName="t_promotion_register" domainObjectName="promotion.register.TPromotionRegister" 
+    mapperName="promotion.register.TPromotionRegisterMapper" >
+		<generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+	</table> -->
+	<table schema="smd" tableName="t_ll_pay_auth_fee" domainObjectName="ll.pay.auth_fee.TLlPayAuthFee" 
+    mapperName="ll.pay.auth_fee.TLlPayAuthFeeMapper" >
+		<generatedKey column="id" sqlStatement="Mysql" identity="true"/>
 	</table>
-
 	
   </context>
 </generatorConfiguration>
