@@ -74,27 +74,30 @@
 		    <artifactId>fastjson</artifactId>
 		    <version>1.2.4</version>
 		</dependency>
-		<!-- mybatis -->
-		<!-- <dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>${mybatis.version}</version>
-		</dependency> -->
-		<!-- page plugin -->
-		<!-- <dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper</artifactId>
-			<version>${pagehelper.version}</version>
-		</dependency> -->
-		<!-- alibaba druid datasource -->
-		<!--integration common mapper-->
-        <!-- <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper</artifactId>
-            <version>${mapper.version}</version>
-        </dependency> -->
-        
-        
+		<dependency> <!-- exclude掉spring-boot的默认log配置 -->  
+	        <groupId>org.springframework.boot</groupId>  
+	        <artifactId>spring-boot-starter</artifactId>  
+	        <exclusions>  
+	            <exclusion>  
+	                <groupId>org.springframework.boot</groupId>  
+	                <artifactId>spring-boot-starter-logging</artifactId>  
+	            </exclusion>  
+	        </exclusions>  
+	    </dependency>  
+	    <dependency> <!-- 引入log4j2依赖 -->  
+	        <groupId>org.springframework.boot</groupId>  
+	        <artifactId>spring-boot-starter-log4j2</artifactId>  
+	    </dependency>  
+	    <dependency>  <!-- 加上这个才能辨认到log4j2.yml文件 -->  
+	        <groupId>com.fasterxml.jackson.dataformat</groupId>  
+	        <artifactId>jackson-dataformat-yaml</artifactId>  
+	    </dependency>
+		<!--spring boot 配置处理器 属性参数加载 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 
 	<build>
