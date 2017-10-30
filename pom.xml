@@ -99,7 +99,101 @@
 			<optional>true</optional>
 		</dependency>
 	</dependencies>
-
+	
+	<profiles>
+		<!-- 多环境打包配置，使用-P参数指定配置文件。例如打包生产环境：mvn xxx -Pproduct -->
+		<profile>
+			<!-- 测试环境 -->
+			<id>dev</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.8</version>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<configuration>
+									<tasks>
+										<delete dir="${project.build.outputDirectory}/test_config"
+											includeemptydirs="true" />
+										<delete dir="${project.build.outputDirectory}/prod_config"
+											includeemptydirs="true" />
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<!-- 测试环境 -->
+			<id>test</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.8</version>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<configuration>
+									<tasks>
+										<copy todir="${project.build.outputDirectory}/" overwrite="true">
+											<fileset dir="${basedir}/src/main/resources/test_config/" />
+										</copy>
+										<delete dir="${project.build.outputDirectory}/test_config"
+											includeemptydirs="true" />
+										<delete dir="${project.build.outputDirectory}/prod_config"
+											includeemptydirs="true" />
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<!-- 生产环境 -->
+			<id>prod</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.8</version>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<configuration>
+									<tasks>
+										<copy todir="${project.build.outputDirectory}/" overwrite="true">
+											<fileset dir="${basedir}/src/main/resources/prod_config/" />
+										</copy>
+										<delete dir="${project.build.outputDirectory}/test_config"
+											includeemptydirs="true" />
+										<delete dir="${project.build.outputDirectory}/prod_config"
+											includeemptydirs="true" />
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	
 	<build>
 		<plugins>
 			<plugin>

@@ -1,13 +1,17 @@
 package com.osc.oscashapp.properties.memcached;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 /**
  * prefix="org.mybatis.caches.memcached"
  * 在application.properties配置的属性前缀
  * 在类中的属性就不用使用{@value}进行注入了
  * @author Administrator
  */
+@Component
 @ConfigurationProperties(prefix="org.mybatis.caches.memcached")
+@PropertySource("classpath:memcached.properties")
 public class MemcachedProperties {
 	
 	private String keyprefix;
